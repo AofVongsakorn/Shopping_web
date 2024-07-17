@@ -1,8 +1,11 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { ShopContext } from '../Context/ShopContext'
+
 
 const Login = () => {
 
+  const  { NavbarSelect } = useContext(ShopContext)
 
   const [state, setState] = useState("Login")
 
@@ -40,6 +43,7 @@ const Login = () => {
         console.log(data);
         if (data.success) {
           localStorage.setItem('token', data.token);
+          NavbarSelect("select1")
           location.replace('/');
         } else {
           alert(data.errors);

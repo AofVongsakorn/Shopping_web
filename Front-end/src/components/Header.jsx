@@ -7,7 +7,7 @@ import { ShopContext } from '../Context/ShopContext';
 
 const Header = () => {
 
-  const { getTotalItemsInCart } = useContext(ShopContext);
+  const { getTotalItemsInCart, NavbarSelect } = useContext(ShopContext);
 
   const token = localStorage.getItem('token');
 
@@ -15,6 +15,7 @@ const Header = () => {
 
     localStorage.removeItem('token');
     window.location.href = '/';
+    NavbarSelect("select1")
   }
 
   return (

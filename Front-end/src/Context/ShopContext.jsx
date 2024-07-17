@@ -6,6 +6,7 @@ export const ShopContext = createContext();
 const ShopContextProvider = ({ children }) => {
 
     const token = localStorage.getItem('token');
+    const getSelectNav = sessionStorage.getItem('selectedNav');
 
     const getDefaultCart = () => {
         let cart = {};
@@ -17,6 +18,8 @@ const ShopContextProvider = ({ children }) => {
 
     const [cartItems, setCartItems] = useState(getDefaultCart());
     const [all_products, setAll_products] = useState([]);
+    const [navBar, setNavBar] = useState(getSelectNav)
+
 
     const getAllProducts = () => {
         fetch("http://localhost:3000/allproducts")
@@ -42,6 +45,11 @@ const ShopContextProvider = ({ children }) => {
             })
     }
 
+    const NavbarSelect = (select) => {
+        setNavBar(select)
+        sessionStorage.setItem('selectedNav', select)
+    }
+
 
     useEffect(() => {
         getAllProducts()
@@ -50,6 +58,7 @@ const ShopContextProvider = ({ children }) => {
         }
     }, [])
 
+    
 
 
     const addToCart = (id) => {
@@ -115,7 +124,7 @@ const ShopContextProvider = ({ children }) => {
         return totalItems;
     };
 
-    const contextValue = { all_products, cartItems, addToCart, removeFromCart, getTotalCartAmount, getTotalItemsInCart };
+    const contextValue = { all_products, cartItems,navBar, NavbarSelect, addToCart, removeFromCart, getTotalCartAmount, getTotalItemsInCart };
 
     return (
         <ShopContext.Provider value={contextValue}>

@@ -2,7 +2,10 @@
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div className="w-full h-[45px] flex items-center justify-center mt-5 bg-stone-200 text-[#6d6b6b] font-semibold">
+      <span>© Copyright Aoffy dev</span>
+
+    </div>
   )
 }
 
