@@ -38,8 +38,8 @@ const Header = () => {
             </div>
           </Link>
           {token ?
-            <div className='bg-orange-600 rounded-3xl text-center px-6 py-2 text-white' onClick={logOutHandler}>Log out</div> :
-            <Link to={"/login"}>  <div className='bg-orange-600 rounded-3xl text-center px-6 py-2 text-white'>Login</div></Link>
+            <div className='bg-orange-600 rounded-3xl text-center px-6 py-2 text-white cursor-pointer' onClick={logOutHandler}>Log out</div> :
+            <Link to={"/login"}>  <div className='bg-orange-600 rounded-3xl text-center px-6 py-2 text-white cursor-pointer'>Login</div></Link>
           }
 
 

@@ -5,9 +5,9 @@ import bg from '../image/bg/bgecom.png'
 
 const Hero = () => {
     return (
-        <div className='w-full h-[800px] relative flex flex-col px-8'>
+        <div className='w-full h-[800px] relative flex flex-col px-8 items-center'>
 
-            <img src={bg} alt="" className='-z-10 absolute h-[100%] w-[100%]' />
+            <img src={bg} alt="" className='-z-10 absolute h-[100%] w-[95%]' />
 
             <div className='pl-[5%] gap-3 flex flex-col mt-[10%]'>
                 <h1 className='text-5xl font-bold'>Digital Shopping Hub</h1>

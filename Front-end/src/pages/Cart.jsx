@@ -1,12 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ShopContext } from "../Context/ShopContext";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
+
 const Cart = () => {
-  const { all_products, cartItems, removeFromCart, getTotalCartAmount } = useContext(ShopContext);
+  const { all_products, cartItems, removeFromCart, getTotalCartAmount, scrollToTop } = useContext(ShopContext);
+
+  useEffect(() => {
+   scrollToTop("cartTop")
+  }, [])
 
   return (
-    <div className="w-full flex flex-col items-center justify-center ">
+    <div className="w-full flex flex-col items-center justify-center " id="cartTop">
       {/* loop cart */}
       <table className="w-[90%] mt-6">
         <thead>

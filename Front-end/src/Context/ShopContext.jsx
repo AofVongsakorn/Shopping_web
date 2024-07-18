@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import { scroller } from "react-scroll";
 // import all_products from "../data/all_products";
 
 export const ShopContext = createContext();
@@ -50,6 +51,19 @@ const ShopContextProvider = ({ children }) => {
         sessionStorage.setItem('selectedNav', select)
     }
 
+    const scrollToTop = (id) => {
+        scroller.scrollTo(id,
+            {
+                duration: 500,
+                delay: 0,
+                smooth: 'easeInOutQuart',
+                offset: -100,
+                forceIframe: false,
+                callback: null,
+
+            })
+    }
+
 
     useEffect(() => {
         getAllProducts()
@@ -58,7 +72,7 @@ const ShopContextProvider = ({ children }) => {
         }
     }, [])
 
-    
+
 
 
     const addToCart = (id) => {
@@ -124,7 +138,17 @@ const ShopContextProvider = ({ children }) => {
         return totalItems;
     };
 
-    const contextValue = { all_products, cartItems,navBar, NavbarSelect, addToCart, removeFromCart, getTotalCartAmount, getTotalItemsInCart };
+    const contextValue = {
+        all_products,
+        cartItems,
+        navBar,
+        scrollToTop,
+        NavbarSelect,
+        addToCart,
+        removeFromCart,
+        getTotalCartAmount,
+        getTotalItemsInCart
+    };
 
     return (
         <ShopContext.Provider value={contextValue}>

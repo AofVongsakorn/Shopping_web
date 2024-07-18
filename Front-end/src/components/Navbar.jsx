@@ -1,24 +1,19 @@
-import React, { useState, useEffect,useContext } from 'react'
+import React, { useState,useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { ShopContext } from '../Context/ShopContext'
 
 const Navbar = () => {
   
-  const { navBar, NavbarSelect } = useContext(ShopContext);
+  const { navBar, NavbarSelect, scrollToTop } = useContext(ShopContext);
   const [select, setSelect] = useState(navBar)
-
-  useEffect(() => {
-    // Retrieve the selected state from localStorage when the component mounts
-    // const savedSelect = sessionStorage.getItem('selectedNav')
-    // if (savedSelect) {
-    //   setSelect(savedSelect)
-    // }
-
-  }, [])
 
   const handleNavClick = (selection) => {
     setSelect(selection)
     // Save the selected state to localStorage
+   
+    if (selection !== "select1") {
+      scrollToTop("categoryTop");
+    }
     NavbarSelect(selection)
     
   }

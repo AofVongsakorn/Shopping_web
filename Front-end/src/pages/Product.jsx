@@ -3,28 +3,31 @@ import { useParams } from "react-router-dom";
 
 import { MdStar } from 'react-icons/md'
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ShopContext } from "../Context/ShopContext";
-
 
 
 const Product = () => {
 
-  const {all_products, addToCart} = useContext(ShopContext);
+  const { all_products, addToCart, scrollToTop } = useContext(ShopContext);
   const { productId } = useParams();
 
   const product = all_products.find(product => product.id === Number(productId));
-  
-  if (!product) { 
+
+  useEffect(() => {
+    scrollToTop("productTop")
+  }, [])
+
+  if (!product) {
     return (
-      <div className="flex flex-col gap-6 pl-6">
+      <div className="flex flex-col gap-6 pl-6" id="productTop">
         <span className="font-base text-lg  mt-10">Product not found</span>
       </div>
     )
-   }
+  }
 
   return (
-    <div className="flex flex-col gap-6 pl-6">
+    <div className="flex flex-col gap-6 pl-6" id="productTop">
       <span className="font-base text-lg  mt-10">{product.name}</span>
       <div className="flex gap-4 justify-around">
 
@@ -44,7 +47,7 @@ const Product = () => {
             <div>{product.new_price}</div>
           </div>
           <div className='flex gap-2'>
-            <button onClick={() => {addToCart(product.id)}} className="bg-black  text-white px-4 w-[300px] py-3 text-xl font-bold border-2 flex items-center justify-center">Add to cart </button>
+            <button onClick={() => { addToCart(product.id) }} className="bg-black  text-white px-4 w-[300px] py-3 text-xl font-bold border-2 flex items-center justify-center">Add to cart </button>
             <button className="bg-white  text-black px-4 w-[300px] py-3 text-xl font-bold border-2 flex items-center justify-center" >Buy Now </button>
 
           </div>
